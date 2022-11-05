@@ -10,22 +10,21 @@ const attachment = new Schema({
 
 const message = new Schema({
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'user',
       required: true,
     },
     shop: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'shop',
       required: true,
     },
     conversation: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'conversation',
       required: true,
     },
     message: { type: String },
-    type: { type: String },
     attachments: [attachment],
 }, {
     timestamps: true
