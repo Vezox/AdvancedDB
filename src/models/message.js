@@ -1,33 +1,35 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const attachment = new Schema({
   value: { type: String, required: true },
   type: { type: String, required: true },
   name: { type: String, required: true },
-})
+});
 
-const message = new Schema({
-    user: {
+const message = new Schema(
+  {
+    user_id: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: "user",
       required: true,
     },
-    shop: {
+    shop_id: {
       type: Schema.Types.ObjectId,
-      ref: 'shop',
+      ref: "shop",
       required: true,
     },
-    conversation: {
+    conversation_id: {
       type: Schema.Types.ObjectId,
-      ref: 'conversation',
+      ref: "conversation",
       required: true,
     },
-    message: { type: String },
+    message: { type: String, required: true },
     attachments: [attachment],
-}, {
-    timestamps: true
-})
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('message', message)
+module.exports = mongoose.model("message", message);

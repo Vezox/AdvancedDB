@@ -5,22 +5,21 @@ class ShopController {
   static async create(req, res) {
     try {
       const shop = await ShopModel.create(req.body);
-      res.status(201).json(shop);
+      return res.status(201).send(shop);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      return res.status(500).send({ error: error.message });
     }
   }
 
-  static async listShops(req, res) {
+  static async list(req, res) {
     try {
-      const user_id = req.params.user_id;
-      const shops = await ShopModel.find({ user: user_id }).populate({
-        path: "user",
-        select: "name",
+      const shops = await ShopModel.find({ user_id: req.payload.id }).populate({
+        path: "user_id",
+        select: "full_name",
       });
-      res.status(200).json(shops);
+      return res.status(200).send(shops);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      return res.status(500).send({ error: error.message });
     }
   }
 }

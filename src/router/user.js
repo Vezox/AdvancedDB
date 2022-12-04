@@ -1,15 +1,7 @@
-const Router = require('express').Router();
-const UserModel = require('../models/user');
+const Router = require("express").Router();
+const UserController = require("../controllers/user");
 
-Router
-.post('/create', async (req, res) => {
-  try {
-    const user = await UserModel.create(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
+Router.get("/get", UserController.get);
+Router.post("/update", UserController.update);
 
 module.exports = Router;

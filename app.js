@@ -10,8 +10,8 @@ const port = 3000;
 db.connect();
 
 //middleware
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // router
 Router(app);

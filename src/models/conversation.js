@@ -1,22 +1,25 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const conversation = new Schema({
-    user: {
+const conversation = new Schema(
+  {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'user',
+      ref: "user",
       required: true,
     },
-    shop: {
+    shop_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'shop',
+      ref: "shop",
       required: true,
     },
     last_message: { type: String },
     unread: { type: Number, default: 0 },
     last_seen: { type: Number },
-}, {
-    timestamps: true
-})
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('conversation', conversation)
+module.exports = mongoose.model("conversation", conversation);

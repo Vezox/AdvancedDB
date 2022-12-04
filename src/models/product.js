@@ -7,9 +7,13 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
-    shop: {
+    shop_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "shop",
+      required: true,
+    },
+    image: {
+      type: String,
       required: true,
     },
     price: {
@@ -18,12 +22,16 @@ const productSchema = new Schema(
     },
     quantity: {
       type: Number,
-      default: 0,
       required: true,
+      default: 0,
     },
     sold: {
       type: Number,
       default: 0,
+    },
+    description: {
+      type: String,
+      default: "",
     },
   },
   {

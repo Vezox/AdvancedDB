@@ -2,12 +2,12 @@ const Schema = require("mongoose").Schema;
 const productModel = require("../models/product");
 
 const orderSchema = new Schema({
-  user: {
+  user_id: {
     type: Schema.Types.ObjectId,
     ref: "user",
     required: true,
   },
-  shop: {
+  shop_id: {
     type: Schema.Types.ObjectId,
     ref: "shop",
     required: true,
@@ -34,7 +34,10 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
+  note: {
+    type: String,
+    default: "",
+  },
 });
-
 
 module.exports = require("mongoose").model("order", orderSchema);
